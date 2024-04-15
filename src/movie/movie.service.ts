@@ -11,13 +11,12 @@ export class MovieService {
     return movies;
   }
 
-   findOneMovie(id: string) {
-    try{  
+   findOneMovie(id: string) { 
       const movie = movies.find(movie => movie.id === id);
-    return movie;}
-      catch (error) {
-        throw new NotFoundException()
+      if(!movie) {
+          throw new NotFoundException()
       }
+    return movie;
 
 }
   }
