@@ -1,5 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
-import {movies} from '../data/movies.json'
+import {movies} from '../data/movies.json';
+import { iMovies } from './entities/movie.interface';
 
 
 
@@ -7,11 +8,11 @@ import {movies} from '../data/movies.json'
 @Injectable()
 export class MovieService {
 
-  findMovies() {
+  findMovies() : any {
     return movies;
   }
 
-   findOneMovie(id: string) { 
+   findOneMovie(id: string) : iMovies { 
       const movie = movies.find(movie => movie.id === id);
       if(!movie) {
           throw new NotFoundException()
